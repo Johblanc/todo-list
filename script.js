@@ -7,6 +7,8 @@ function addTodo(text)
     // This function will create a new todo object based on the
     // text that was entered in the text input, and push it into
     // the `todoItems` array
+    todoItems.push(text)
+    console.log(todoItems)
 
 }
 
@@ -15,11 +17,14 @@ function renderTodo(todo)
     // Select the first element with a class of `js-todo-list`
 
     // Create an `li` element and assign it to the`ul`
+    let newLi = document.createElement("li")
 
     // Set the contents of the `li` element created above
+    newLi.innerHTML = todoItems[todoItems.length -1]
 
     // Append the element to the DOM as the last child of
     // the element referenced by the `list` variable
+    document.getElementById("todo-list").appendChild(newLi)
 
 }
 
@@ -40,12 +45,14 @@ form.addEventListener('submit', event =>
     // prevent page refresh on form submission
     event.preventDefault();
 
-    console.log(event);
 
     // select the text input
+    const inputTodo = document.getElementById("todo-input")
 
     // Get the value of the input
+    let value = inputTodo.value
 
     // send the value to the addTodo function
+    addTodo(value)
 
 });
